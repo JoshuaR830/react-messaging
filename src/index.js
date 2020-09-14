@@ -1,15 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import MessageList from './MessageList';
+import MessageBox from './MessageBox';
 import * as serviceWorker from './serviceWorker';
+import Sockette from 'sockette'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const ws = new Sockette('wss://oc9gdrsfcl.execute-api.eu-west-2.amazonaws.com/messaging-test', {
+  timeout: 5e3,
+  maxAttempts: 1,
+  onopen: e => {
+    ReactDOM.render(
+      <React.StrictMode>
+        {/* <App /> */}
+        <MessageBox 
+          webSocket = {ws}
+        />
+        <MessageList/>
+      </React.StrictMode>,
+      document.getElementById('root')
+    );
+    console.log("Connected!")
+    // ws.json({
+    //   action: "default",
+    //   message: "Hello world!"
+    // });
+  },
+  onmessage: e => {console.log('Received:', e)},
+  onreconnect: e => console.log('Reconnecting...', e),
+  onmaximum: e => console.log('Stop attempting!', e),
+  onclose: e => console.log('Closed!', e),
+  onerror: e => console.log('Error:', e),
+});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
