@@ -28,5 +28,4 @@ yarn-error.log*
 /cordova/platforms/
 /cordova/src
 /cordova/public
-/cordova/www
 /cordova/css
