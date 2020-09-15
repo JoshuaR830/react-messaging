@@ -1,16 +1,25 @@
+.message-row {
+    width: 100%;
+}
+
+.message-thread-container {
+    width: 100%;
+    float: left;
+}
+
 .message-thread {
     width: fit-content;
     max-width: 40%;
     padding: 16px;
+    word-wrap: break-word;
 }
 
 .me {
     background-color: #0000ff;
     color: #ffffff;
     border-radius: 16px 16px 0 16px;
+    margin: 8px;
     float: right;
-    margin: 8px 8px 8px 20%;
-
 }
 
 .other-person {

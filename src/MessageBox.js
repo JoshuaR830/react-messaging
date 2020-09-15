@@ -8,7 +8,8 @@ class MessageBox extends React.Component {
         console.log(props);
         this.state = {
             messageToSend: '',
-            webSocket: props.webSocket
+            webSocket: props.webSocket,
+            onSubmit: (message) => props.onSubmit(props.context, message)
         }
 
         this.onInputChange = this.onInputChange.bind(this);
@@ -19,6 +20,7 @@ class MessageBox extends React.Component {
         console.log(this.state.messageToSend);
         event.preventDefault();
         console.log(this.state);
+        this.state.onSubmit(this.state.onSubmit(this.state.messageToSend));
         this.state.webSocket.json({
             action: "default",
             message: this.state.messageToSend
@@ -38,7 +40,6 @@ class MessageBox extends React.Component {
             <div className="bottom-bar">
                 <form onSubmit={this.sendMessage} className="message-box-form">
                     <input type="text" className="message-box" value={this.state.messageToSend} onChange={this.onInputChange}/>
-                    {/* <input type="submit" className="message-button" value="Send" /> */}
                     <button type="submit" className="message-button"><span className="material-icons">send</span></button>
                 </form>
             </div>

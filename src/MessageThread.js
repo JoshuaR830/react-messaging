@@ -13,8 +13,10 @@ class MessageThread extends React.Component {
 
     render() {
         return(
-            <div className={`message-thread ${this.state.isSender ? "me" : "other-person"}`}>
-                {this.state.messageText}
+            <div className="message-thread-container">
+                <div className={`message-thread ${this.state.isSender ? "me" : "other-person"}`}>
+                    {this.state.messageText}
+                </div>
             </div>
         );
     }

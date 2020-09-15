@@ -21,3 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Cordova specific files
+/cordova/node_modules/
+/cordova/plugins/
+/cordova/platforms/
+/cordova/src
+/cordova/public
+/cordova/www
+/cordova/css

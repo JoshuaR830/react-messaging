@@ -1,5 +1,4 @@
 import React from 'react';
-import MessageList from './MessageList';
 import MessageBox from './MessageBox';
 import MessageThread from './MessageThread';
 
@@ -50,6 +49,7 @@ class App extends React.Component {
             onmessage: e => {
                 if(this._isMounted) {
                     this.generateMessageList(e.data);
+                    this.generateThread(e.data, false);
                 }
                 console.log('Received:', e.data)
             },
@@ -63,11 +63,26 @@ class App extends React.Component {
     }
 
     generateMessageList(message) {
+        // let messages = this.state.messageList.slice();
+
+        // console.log(messages)
+
+        // messages.push(<MessageList key={messages.length} messageText = {message} isSelected = {false} isRead = {false}/>);
+
+        // console.log(messages)
+
+        // this.setState({
+        //     messageList: messages
+        // })
+    }
+
+
+    generateThread(message, isSender) {
         let messages = this.state.messageList.slice();
 
         console.log(messages)
 
-        messages.push(<MessageList key={messages.length} messageText = {message} isSelected = {false} isRead = {false}/>);
+        messages.push(<MessageThread key={messages.length} messageText = {message} isSender = {isSender}/>);
 
         console.log(messages)
 
@@ -87,6 +102,15 @@ class App extends React.Component {
         })
     }
 
+    updateThreads(me, message) {
+        if(message === undefined) {
+            return;
+        }
+        console.log("Thread updated");
+        console.log(message);
+        me.generateThread(message, true);
+    }
+
     componentDidMount() {
         this._isMounted = true;
     }
@@ -98,17 +122,19 @@ class App extends React.Component {
     render() {
         return ( 
             <div className="thread-view">
-                {/* {this.state.messageList} */}
-                <MessageThread 
+                {this.state.messageList}
+                {/* <MessageThread 
                     isSender = {false} 
                     messageText="Hello world! how are you doing this should overflow onto the next line at some point because it is a big hello to the whole world!"
                 />
                 <MessageThread 
                     isSender = {true} 
                     messageText="Hello world! how are you doing this should overflow onto the next line at some point because it is a big hello to the whole world!"
-                />
+                /> */}
                 <MessageBox
                     webSocket = {this.state.ws}
+                    onSubmit = {this.updateThreads}
+                    context = {this}
                 />
             </div>
         );
