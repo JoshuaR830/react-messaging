@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './css/MessageBox.css'
+
 class MessageBox extends React.Component {
     constructor(props) {
         super(props);
@@ -33,12 +35,13 @@ class MessageBox extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.sendMessage}>
-                <label>Message:
-                    <input type="text" value={this.state.messageToSend} onChange={this.onInputChange}/>
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div className="bottom-bar">
+                <form onSubmit={this.sendMessage} className="message-box-form">
+                    <input type="text" className="message-box" value={this.state.messageToSend} onChange={this.onInputChange}/>
+                    {/* <input type="submit" className="message-button" value="Send" /> */}
+                    <button type="submit" className="message-button"><span className="material-icons">send</span></button>
+                </form>
+            </div>
         )
     }
 }

@@ -5,8 +5,9 @@ class MessageList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isRead: false,
-            isSelected: false
+            isRead: props.isRead,
+            isSelected: props.isSelected,
+            messageText: props.messageText
         };
         console.log(this.state.isSelected);
     }
@@ -22,7 +23,7 @@ class MessageList extends React.Component {
     render() {
         console.log(`Selected: ${this.state.isSelected}`);
         return (
-            <div onClick={() => this.handleClick()} className={`message-preview ${this.state.isRead ? "read": "unread"} ${this.state.isSelected ? "selected" : ""}`}>Hello</div>
+            <div onClick={() => this.handleClick()} className={`message-preview ${this.state.isRead ? "read": "unread"} ${this.state.isSelected ? "selected" : ""}`}>{this.state.messageText}</div>
         )
     }
 }

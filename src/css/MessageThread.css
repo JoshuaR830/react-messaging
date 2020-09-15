@@ -1,0 +1,22 @@
+.message-thread {
+    width: fit-content;
+    max-width: 40%;
+    padding: 16px;
+}
+
+.me {
+    background-color: #0000ff;
+    color: #ffffff;
+    border-radius: 16px 16px 0 16px;
+    float: right;
+    margin: 8px 8px 8px 20%;
+
+}
+
+.other-person {
+    background-color: #eceff1;
+    color: #000000;
+    border-radius: 0 16px 16px 16px;
+    float: left;
+    margin: 8px 20% 8px 8px;
+}
