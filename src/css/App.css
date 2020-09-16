@@ -28,6 +28,21 @@
   color: #61dafb;
 }
 
+.background-container {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00d5ff;
+  background: linear-gradient(125deg, #00d5ff, #b57dff);
+}
+
+.thread-view {
+  margin: 0;
+  width: 100vw;
+  height: calc(100vh - 56px);
+  overflow: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

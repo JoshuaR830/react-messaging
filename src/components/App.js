@@ -4,7 +4,7 @@ import MessageThread from './MessageThread';
 
 import Sockette from 'sockette'
 
-import './App.css';
+import './../css/App.css';
 
 // function App() {
 //   return (
@@ -120,22 +120,24 @@ class App extends React.Component {
     }
 
     render() {
-        return ( 
-            <div className="thread-view">
-                {this.state.messageList}
-                {/* <MessageThread 
-                    isSender = {false} 
-                    messageText="Hello world! how are you doing this should overflow onto the next line at some point because it is a big hello to the whole world!"
-                />
-                <MessageThread 
-                    isSender = {true} 
-                    messageText="Hello world! how are you doing this should overflow onto the next line at some point because it is a big hello to the whole world!"
-                /> */}
-                <MessageBox
-                    webSocket = {this.state.ws}
-                    onSubmit = {this.updateThreads}
-                    context = {this}
-                />
+        return (
+            <div className="background-container">
+                <div className="thread-view">
+                    {this.state.messageList}
+                    {/* <MessageThread 
+                        isSender = {false} 
+                        messageText="Hello world! how are you doing this should overflow onto the next line at some point because it is a big hello to the whole world!"
+                    />
+                    <MessageThread 
+                        isSender = {true} 
+                        messageText="Hello world! how are you doing this should overflow onto the next line at some point because it is a big hello to the whole world!"
+                    /> */}
+                    <MessageBox
+                        webSocket = {this.state.ws}
+                        onSubmit = {this.updateThreads}
+                        context = {this}
+                    />
+                </div>
             </div>
         );
     }
