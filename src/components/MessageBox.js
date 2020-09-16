@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SendIcon from '@material-ui/icons/SendRounded'
+
 import './../css/MessageBox.css'
 
 class MessageBox extends React.Component {
@@ -48,7 +50,7 @@ class MessageBox extends React.Component {
             <div className="bottom-bar">
                 <form onSubmit={this.sendMessage} className="message-box-form">
                     <input type="text" className="message-box" value={this.state.messageToSend} onChange={this.onInputChange} ref={(input) => { this.messageInput = input; }}/>
-                    <button type="submit" className="message-button"><span className="material-icons">send</span></button>
+                    <button type="submit" className="message-button"><SendIcon style={{color: "#00b7ff"}}/></button>
                 </form>
             </div>
         )

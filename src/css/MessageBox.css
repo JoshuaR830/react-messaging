@@ -42,10 +42,3 @@
 .message-button:active {
     background-color: #eceff1;
 }
-
-@media (hover: hover) {
-    .message-button:hover {
-        cursor: pointer;
-        background-color: #eceff1;
-    }
-}
