@@ -1,18 +1,24 @@
 import React from 'react';
-import './../css/MessageList.css'
+import './../css/MessageListItem.css'
 
-class MessageList extends React.Component {
+class MessageListItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            friendsList: []
+            isRead: props.isRead,
+            isSelected: props.isSelected,
+            messageText: props.messageText,
+            firstName: props.firstName,
+            lastName: props.lastName,
+            userId: props.userId,
         };
+        console.log(this.state.isSelected);
     }
 
     handleClick() {
         console.log("Hello")
         this.setState({
-            isRead: !this.state.isRead,
+            isRead: true,
             isSelected: true
         })
     }
@@ -30,14 +36,10 @@ class MessageList extends React.Component {
                     console.log(friendItem.LastName);
                     console.log(friendItem.UserId);
 
-                    
-
                     me.setState({
                         firstName: friendItem.FirstName,
                         lastName: friendItem.LastName,
                         userId: friendItem.UserId
-
-
                     })
                     // MessageList.push()
                 })
@@ -53,10 +55,11 @@ class MessageList extends React.Component {
     render() {
         console.log(`Selected: ${this.state.isSelected}`);
         return (
-            <div>
-                <MessageListItem ></MessageListItem>
+            <div onClick={() => this.handleClick()} className={`message-list-item ${this.state.isRead ? "read": "unread"} ${this.state.isSelected ? "selected" : ""}`} data-user-id={this.state.userId}>
+                <div className="name" >{this.state.firstName} {this.state.lastName}</div>
+                <div className="message-preview">{this.state.messageText}</div>
             </div>
         )
     }
 }
-export default MessageList;
+export default MessageListItem;

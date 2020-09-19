@@ -1,6 +1,7 @@
 import React from 'react';
 import MessageBox from './MessageBox';
 import MessageThread from './MessageThread';
+import MessageListItem from './MessageListItem';
 
 import Sockette from 'sockette'
 
@@ -44,7 +45,8 @@ class App extends React.Component {
             timeout: 5e3,
             maxAttempts: 1,
             onopen: e => {
-                console.log("Connected!")
+                console.log("Connected!");
+                console.log(e);
             },
             onmessage: e => {
                 if(this._isMounted) {
@@ -132,6 +134,9 @@ class App extends React.Component {
                         isSender = {true} 
                         messageText="Hello world! how are you doing this should overflow onto the next line at some point because it is a big hello to the whole world!"
                     /> */}
+                    <MessageListItem
+                        messageText = "Hello"
+                    />
                     <MessageBox
                         webSocket = {this.state.ws}
                         onSubmit = {this.updateThreads}

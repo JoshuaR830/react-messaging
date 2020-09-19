@@ -1,23 +1,43 @@
+.message-list-item {
+    white-space: nowrap;
+    width: calc(100% - 32px);
+    padding: 16px;
+    background-color: #eceff166;
+    position: relative;
+}
+
 .message-preview {
-    height: 40px;
-    line-height: 40px;
     white-space: nowrap;
     width: 150px;
-    padding-left: 16px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .selected {
     border-radius: 8px;
-    background-color: #ededed;
 }
 
 .read {
-    color: #7d7d7d;
+    color: #5a5a5a;
 }
 
 .unread {
     font-weight: bold;
     color: black;
+    background-color: #eceff1d3;
+}
+
+.name {
+    color: #000000;
+}
+
+.unread::after {
+    content: "";
+    background-color: #8a2be2;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 16px;
+    top: calc(50% - 5px);
 }
